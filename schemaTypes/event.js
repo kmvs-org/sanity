@@ -5,6 +5,7 @@ import image from './ui/image'
 import content from './ui/content'
 
 import {externalLinkButton as button} from './ui/button'
+import excerpt from './ui/excerpt'
 
 export default {
   name: 'event',
@@ -15,12 +16,34 @@ export default {
   fields: [
     title,
     {
-      name: 'date',
-      type: 'date',
-      title: 'Date',
+      name: 'dates',
+      type: 'object',
+      title: 'Dates',
+      fields: [
+        {
+          name: 'start',
+          type: 'date',
+          title: 'Start',
+          description: 'Required',
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: 'end',
+          type: 'date',
+          title: 'End',
+          description: 'Optional',
+        },
+      ],
+      options: {
+        columns: 2,
+      },
     },
     image,
+    excerpt,
     content,
-    button,
+    {
+      ...button,
+      title: 'Call to Action',
+    },
   ],
 }

@@ -26,5 +26,21 @@ export default {
       of: [section],
     },
     gallery,
+    {
+      name: 'newsMentions',
+      type: 'array',
+      title: 'News Mentions',
+      of: [
+        {
+          name: 'newsMention',
+          type: 'reference',
+          to: [
+            {
+              type: 'news',
+            },
+          ],
+        },
+      ],
+    },
   ],
 }

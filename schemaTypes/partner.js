@@ -13,6 +13,20 @@ export default {
   fields: [
     title,
     {
+      name: 'type',
+      type: 'tag',
+      title: 'Type',
+      options: {
+        includeFromRelated: 'type',
+        predefinedTags: [
+          {label: 'Partner', value: 'Partner'},
+          {label: 'Network Member', value: 'Network Member'},
+          {label: 'Donor', value: 'Donor'},
+        ],
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       title: 'Link',
       name: 'href',
       type: 'url',

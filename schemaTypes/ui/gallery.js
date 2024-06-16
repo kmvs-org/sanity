@@ -6,12 +6,16 @@ export default {
   type: 'object',
   title: 'Gallery',
   icon: MdViewCarousel,
+
   fields: [
     {
       name: 'images',
       type: 'array',
       title: 'Images',
       of: [image],
+      options: {
+        layout: 'grid',
+      },
       validation: (Rule) => Rule.min(2).required(),
     },
   ],

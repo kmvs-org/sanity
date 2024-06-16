@@ -47,6 +47,7 @@ export default {
       type: 'array',
       title: 'Menu',
       of: [menuItem],
+      validation: (Rule) => Rule.min(1).max(6),
     },
   ],
 }

@@ -70,7 +70,7 @@ export default {
       type: 'array',
       title: 'Menu',
       of: [menuItem],
-      validation: (Rule) => Rule.max(3),
+      validation: (Rule) => Rule.max(5),
     },
   ],
 }

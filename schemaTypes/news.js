@@ -33,6 +33,23 @@ export default {
         }).error('Link must begin with https://'),
     },
     image,
-    excerpt,
   ],
+
+  preview: {
+    select: {
+      title: 'title',
+      publication: 'publication',
+      date: 'date',
+      media: 'image',
+    },
+    prepare(selection) {
+      const {title, publication, date, media} = selection
+      const subtitle = date ? new Date(date).toLocaleDateString() : 'No date'
+      return {
+        title: title,
+        subtitle: `${publication} - ${subtitle}`,
+        media: media,
+      }
+    },
+  },
 }
