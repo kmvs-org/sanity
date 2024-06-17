@@ -32,8 +32,8 @@ export default {
       type: 'url',
       validation: (Rule) =>
         Rule.uri({
-          scheme: ['https'],
-        }).error('Link must begin with https://'),
+          scheme: ['https', 'http'],
+        }).error('Link must begin with https:// or http://'),
     },
     image,
     content,
