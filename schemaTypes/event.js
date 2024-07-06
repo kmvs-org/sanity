@@ -46,4 +46,11 @@ export default {
       title: 'Call to Action',
     },
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'excerpt',
+      media: 'image',
+    },
+  },
 }

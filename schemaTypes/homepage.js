@@ -1,3 +1,5 @@
+import image from './ui/image'
+
 const metric = {
   name: 'metric',
   type: 'object',
@@ -31,6 +33,10 @@ export default {
   title: 'Homepage',
 
   fields: [
+    {
+      ...image,
+      title: 'Hero Image',
+    },
     {
       name: 'tagline',
       type: 'text',
