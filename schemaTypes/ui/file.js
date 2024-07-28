@@ -4,13 +4,13 @@ export default {
   name: 'file',
   type: 'file',
   title: 'File',
-  icons: FaFileAlt,
+  icon: FaFileAlt,
   fields: [
     {
       name: 'name',
       type: 'string',
       title: 'Display Name',
-      valiation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required(),
     },
   ],
 }

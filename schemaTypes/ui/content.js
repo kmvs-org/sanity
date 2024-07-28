@@ -4,6 +4,7 @@ import video from './video'
 import gallery from './gallery'
 import html from './html'
 import file from './file'
+import spotlight from './spotlight'
 
 export default {
   name: 'content',
@@ -30,5 +31,6 @@ export default {
     gallery,
     html,
     file,
+    spotlight,
   ],
 }
