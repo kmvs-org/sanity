@@ -18,6 +18,26 @@ export default {
     title,
     image,
     excerpt,
+    {
+      name: 'banner',
+      type: 'object',
+      title: 'Banner',
+      fields: [
+        image,
+        {
+          name: 'title',
+          type: 'string',
+          title: 'Title ',
+          validation: (Rule) => Rule.max(100).required(),
+        },
+        {
+          name: 'subtitle',
+          type: 'string',
+          title: 'Subtitle ',
+          validation: (Rule) => Rule.max(100).required(),
+        },
+      ],
+    },
     content,
     {
       name: 'sections',

@@ -22,6 +22,7 @@ export default {
       validation: (Rule) => Rule.required(),
       options: {
         includeFromRelated: 'type',
+        allowCreate: true,
         predefinedTags: [
           {label: 'Consultancy', value: 'Consultancy'},
           {label: 'Internship', value: 'Internship'},
@@ -45,7 +46,13 @@ export default {
   preview: {
     select: {
       title: 'title',
-      subtitle: 'type',
+      subtitle: 'type.value',
+    },
+    prepare(selection) {
+      return {
+        title: selection.title,
+        subtitle: selection.subtitle,
+      }
     },
   },
 }

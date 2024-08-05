@@ -1,6 +1,5 @@
 import {IoMdFlashlight} from 'react-icons/io'
 
-// noinspection JSUnusedGlobalSymbols
 export default {
   name: 'spotlight',
   type: 'object',
@@ -14,6 +13,19 @@ export default {
       description: 'The text to display in the spotlight.',
       validation: (Rule) => Rule.required(),
     },
+    {
+      name: 'color',
+      type: 'string',
+      title: 'Color',
+      validation: (Rule) => Rule.required(),
+      options: {
+        list: [
+          {title: 'Brown', value: 'gold'},
+          {title: 'Green', value: 'green'},
+          {title: 'Orange', value: 'orange'},
+        ],
+      },
+    },
   ],
   preview: {
     select: {
@@ -23,7 +35,7 @@ export default {
       return {
         title: 'Spotlight',
         subtitle: selection.subtitle,
-      };
+      }
     },
   },
 }

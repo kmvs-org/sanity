@@ -5,6 +5,8 @@ import gallery from './gallery'
 import html from './html'
 import file from './file'
 import spotlight from './spotlight'
+import grid from './grid'
+import quote from './quote'
 
 export default {
   name: 'content',
@@ -32,5 +34,7 @@ export default {
     html,
     file,
     spotlight,
+    grid,
+    quote,
   ],
 }
