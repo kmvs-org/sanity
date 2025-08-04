@@ -1,56 +1,58 @@
-import {IoCalendarClearSharp} from 'react-icons/io5'
+import { IoCalendarClearSharp } from 'react-icons/io5'
 
 import title from './ui/title'
 import image from './ui/image'
 import content from './ui/content'
+import slug from './ui/slug'
 
-import {externalLinkButton as button} from './ui/button'
+import { externalLinkButton as button } from './ui/button'
 import excerpt from './ui/excerpt'
 
 export default {
-  name: 'event',
-  type: 'document',
-  title: 'Event',
-  icon: IoCalendarClearSharp,
+    name: 'event',
+    type: 'document',
+    title: 'Event',
+    icon: IoCalendarClearSharp,
 
-  fields: [
-    title,
-    {
-      name: 'dates',
-      type: 'object',
-      title: 'Dates',
-      fields: [
+    fields: [
+        title,
+        slug({ type: 'events' }),
         {
-          name: 'start',
-          type: 'date',
-          title: 'Start',
-          description: 'Required',
-          validation: (Rule) => Rule.required(),
+            name: 'dates',
+            type: 'object',
+            title: 'Dates',
+            fields: [
+                {
+                    name: 'start',
+                    type: 'date',
+                    title: 'Start',
+                    description: 'Required',
+                    validation: (Rule) => Rule.required(),
+                },
+                {
+                    name: 'end',
+                    type: 'date',
+                    title: 'End',
+                    description: 'Optional',
+                },
+            ],
+            options: {
+                columns: 2,
+            },
         },
+        image,
+        excerpt,
+        content,
         {
-          name: 'end',
-          type: 'date',
-          title: 'End',
-          description: 'Optional',
+            ...button,
+            title: 'Call to Action',
         },
-      ],
-      options: {
-        columns: 2,
-      },
+    ],
+    preview: {
+        select: {
+            title: 'title',
+            subtitle: 'excerpt',
+            media: 'image',
+        },
     },
-    image,
-    excerpt,
-    content,
-    {
-      ...button,
-      title: 'Call to Action',
-    },
-  ],
-  preview: {
-    select: {
-      title: 'title',
-      subtitle: 'excerpt',
-      media: 'image',
-    },
-  },
 }

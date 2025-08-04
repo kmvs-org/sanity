@@ -1,33 +1,48 @@
-import {BsStack} from 'react-icons/bs'
+import { BsStack } from 'react-icons/bs'
 
 import title from './ui/title'
-import image from './ui/image'
-import content from './ui/content'
-import excerpt from './ui/excerpt'
+import slug from './ui/slug'
 
 export default {
-  name: 'resource',
-  type: 'document',
-  title: 'Resource',
-  icon: BsStack,
+    name: 'resource',
+    type: 'document',
+    title: 'Resource',
+    icon: BsStack,
 
-  fields: [
-    title,
-    image,
-    excerpt,
-    content,
-    {
-      name: 'tags',
-      type: 'tags',
-      title: 'Tags',
-      options: {
-        includeFromRelated: 'tags',
-        predefinedTags: [
-          {label: 'Posters', value: 'Posters'},
-          {label: 'Training Modules', value: 'Training Modules'},
-          {label: 'Research', value: 'Research'},
-        ],
-      },
-    },
-  ],
+    fields: [
+        title,
+        slug({ type: 'resources' }),
+        {
+            name: 'type',
+            title: 'Type',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'Study', value: 'study' },
+                    { title: 'Report', value: 'report' },
+                    { title: 'Research', value: 'research' },
+                ],
+            },
+        },
+        {
+            name: 'image',
+            title: 'Cover Image',
+            type: 'image',
+            validation: (Rule) => Rule.required(),
+        },
+        {
+            name: 'description',
+            title: 'Description',
+            type: 'text',
+            rows: 3,
+        },
+        {
+            type: 'file',
+            title: 'File (PDF)',
+            name: 'file',
+            options: {
+                accept: '.pdf',
+            },
+        },
+    ],
 }
