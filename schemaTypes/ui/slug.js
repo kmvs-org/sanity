@@ -1,4 +1,4 @@
-import { SlugInput } from 'sanity-plugin-prefixed-slug'
+import { PrefixedSlugInput } from 'sanity-prefixed-slug'
 
 const slug = ({ name = 'slug', title = 'Slug', group = null, fieldset = null, description = null, type = null } = {}) => ({
     name,
@@ -8,7 +8,7 @@ const slug = ({ name = 'slug', title = 'Slug', group = null, fieldset = null, de
     fieldset,
     description,
     components: {
-        input: SlugInput,
+        input: PrefixedSlugInput,
     },
     options: {
         source: 'title',
