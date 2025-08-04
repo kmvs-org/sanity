@@ -19,7 +19,7 @@ const slug = ({ name = 'slug', title = 'Slug', group = null, fieldset = null, de
         },
         isUnique: async (input, context) => {
             const { document, getClient } = context
-            const client = getClient({ apiVersion: '2025-07-16' })
+            const client = getClient({ apiVersion: '2025-08-04' })
             const id = document._id.replace(/^drafts\./, '')
             const params = {
                 draft: `drafts.${id}`,
