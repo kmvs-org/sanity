@@ -31,7 +31,7 @@ export default {
             validation: (Rule) => Rule.required(),
         },
         {
-            name: 'description',
+            name: 'excerpt',
             title: 'Description',
             type: 'text',
             rows: 3,

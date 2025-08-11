@@ -1,3 +1,5 @@
+import imageText from './imageText'
+
 export default {
     name: 'content',
     type: 'array',
@@ -17,6 +19,6 @@ export default {
                 ],
             },
         },
-
+        imageText,
     ],
 }

@@ -20,13 +20,14 @@ import {
     IoBook,
 } from 'react-icons/io5'
 import { IoMdMegaphone } from 'react-icons/io'
+import { FaBuildingUser } from 'react-icons/fa6'
 
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
 
 // Define the singleton document types
-const singletonTypes = new Set(['siteDetails', 'header', 'footer', 'homepage', 'ourStory', 'team', 'awards', 'partners'])
+const singletonTypes = new Set(['siteDetails', 'header', 'footer', 'homepage', 'ourStory', 'team', 'awards', 'partners', 'joinUs'])
 
 const singletonListItem = (S, typeName, title) =>
     S.listItem()
@@ -59,6 +60,7 @@ export default defineConfig({
                         singletonListItem(S, 'team', 'Team & Board').icon(IoPeople),
                         singletonListItem(S, 'awards', 'Awards & Recognition').icon(FaAward),
                         singletonListItem(S, 'partners', 'Our Partners').icon(MdHub),
+                        singletonListItem(S, 'joinUs', 'Join Us').icon(FaBuildingUser),
                         S.documentTypeListItem('page').title('Other Pages').icon(HiDocumentDuplicate),
                         S.divider(),
                         // Regular document types
