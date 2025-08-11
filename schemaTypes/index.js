@@ -7,7 +7,6 @@ import page from './page'
 import programme from './programme'
 import resource from './resource'
 import event from './event'
-import opportunity from './opportunity'
 import impactStory from './impactStory'
 import team from './team'
 import awards from './awards'
@@ -24,7 +23,6 @@ export const schemaTypes = [
     programme,
     resource,
     event,
-    opportunity,
     impactStory,
     team,
     awards,

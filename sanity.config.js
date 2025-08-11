@@ -10,7 +10,6 @@ import { MdHub } from 'react-icons/md'
 import {
     BsBuildingFillGear,
     BsStack,
-    BsFillSignpost2Fill,
 } from 'react-icons/bs'
 import {
     IoCalendarClearSharp,
@@ -67,7 +66,6 @@ export default defineConfig({
                         S.documentTypeListItem('programme').title('Programmes').icon(GoGoal),
                         S.documentTypeListItem('resource').title('Resources').icon(BsStack),
                         S.documentTypeListItem('event').title('Events').icon(IoCalendarClearSharp),
-                        S.documentTypeListItem('opportunity').title('Careers').icon(BsFillSignpost2Fill),
                         S.documentTypeListItem('impactStory').title('Impact Stories').icon(IoMdMegaphone),
                     ]),
         }),
