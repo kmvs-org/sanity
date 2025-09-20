@@ -24,6 +24,11 @@ export default {
                     type: 'object',
                     fields: [
                         {
+                            ...image,
+                            title: 'Featured Image',
+                            description: 'This image will be displayed in the list view.',
+                        },
+                        {
                             name: 'title',
                             title: 'Title',
                             type: 'string',
@@ -46,7 +51,12 @@ export default {
                             title: 'Description',
                             type: 'text',
                         },
-                        image,
+                        {
+                            ...image,
+                            title: 'Popup Image',
+                            name: 'popupImage',
+                            description: 'This image will be displayed in the popup.',
+                        },
                     ],
                     preview: {
                         select: {
