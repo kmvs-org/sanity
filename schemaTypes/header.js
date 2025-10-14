@@ -43,7 +43,7 @@ const menuItem = {
             type: 'string',
             title: 'Text',
             description: 'Max character count: 15',
-            validation: (Rule) => Rule.required().max(15),
+            validation: (Rule) => Rule.required().max(20),
         },
         {
             name: 'subMenu',

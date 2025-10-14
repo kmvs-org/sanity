@@ -1,5 +1,6 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
+import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemaTypes'
 
@@ -20,6 +21,7 @@ import {
 } from 'react-icons/io5'
 import { IoMdMegaphone } from 'react-icons/io'
 import { FaBuildingUser } from 'react-icons/fa6'
+import { BsFileEarmarkBarGraphFill } from 'react-icons/bs'
 
 
 // Define the actions that should be available for singleton documents
@@ -44,7 +46,7 @@ export default defineConfig({
     plugins: [
         structureTool({
             title: 'Content',
-            structure: (S) =>
+            structure: (S, context) =>
                 S.list()
                     .title('Content')
                     .items([
@@ -64,7 +66,20 @@ export default defineConfig({
                         S.divider(),
                         // Regular document types
                         S.documentTypeListItem('programme').title('Programmes').icon(GoGoal),
-                        S.documentTypeListItem('resource').title('Resources').icon(BsStack),
+                        orderableDocumentListDeskItem({
+                            type: 'resource',
+                            title: 'Resources',
+                            icon: BsStack,
+                            S,
+                            context,
+                        }),
+                        orderableDocumentListDeskItem({
+                            type: 'report',
+                            title: 'Reports',
+                            icon: BsFileEarmarkBarGraphFill,
+                            S,
+                            context,
+                        }),
                         S.documentTypeListItem('event').title('Events').icon(IoCalendarClearSharp),
                         S.documentTypeListItem('impactStory').title('Impact Stories').icon(IoMdMegaphone),
                     ]),

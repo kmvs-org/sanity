@@ -46,7 +46,6 @@ export default {
             name: 'readMore',
             type: 'array',
             title: 'Read More',
-            validation: (Rule) => Rule.max(4),
             of: [
                 {
                     type: 'reference',

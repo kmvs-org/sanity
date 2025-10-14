@@ -12,6 +12,7 @@ import team from './team'
 import awards from './awards'
 import partners from './partners'
 import joinUs from './joinUs'
+import report from './report'
 
 export const schemaTypes = [
     siteDetails,
@@ -28,4 +29,5 @@ export const schemaTypes = [
     awards,
     partners,
     joinUs,
+    report,
 ]

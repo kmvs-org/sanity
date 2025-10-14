@@ -5,10 +5,8 @@ export default defineCliConfig({
         projectId: 'k53lfb44',
         dataset: 'production'
     },
-    studioHost: 'kmvs',
-    /**
-     * Enable auto-updates for studios.
-     * Learn more at https://www.sanity.io/docs/cli#auto-updates
-     */
-    autoUpdates: true,
+    deployment: {
+        autoUpdates: true,
+        appId: 'f53zocscmaqt2f09bpiu5mzp',
+    },
 })

@@ -1,45 +1,52 @@
-import {BsFileEarmarkBarGraphFill} from 'react-icons/bs'
+import { BsFileEarmarkBarGraphFill } from 'react-icons/bs'
+import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list'
+
+import title from './ui/title'
+import slug from './ui/slug'
+import content from './ui/content'
 
 export default {
-  name: 'report',
-  type: 'document',
-  title: 'Report',
-  icon: BsFileEarmarkBarGraphFill,
-  fields: [
-    {
-      name: 'type',
-      type: 'tag',
-      title: 'Type',
-      validation: (Rule) => Rule.required(),
-      options: {
-        includeFromRelated: 'type',
-        predefinedTags: [
-          {label: 'Annual Report', value: 'Annual Report'},
-          {label: 'Audit Report', value: 'Audit Report'},
-        ],
-      },
-    },
-    {
-      name: 'period',
-      type: 'tag',
-      title: 'Reporting Period',
-      validation: (Rule) => Rule.required(),
-      description: 'Eg. 2023 / 2023 Q1 / 2022-23 FY',
-      options: {
-        includeFromRelated: 'type',
-      },
-    },
-    {
-      name: 'file',
-      type: 'file',
-      title: 'File',
-      validation: (Rule) => Rule.required().assetRequired(),
-    },
-  ],
-  preview: {
-    select: {
-      title: 'type',
-      subtitle: 'period',
-    },
-  },
+    name: 'report',
+    type: 'document',
+    title: 'Report',
+    icon: BsFileEarmarkBarGraphFill,
+
+    orderings: [orderRankOrdering],
+    fields: [
+        orderRankField({ type: "report", newItemPosition: "before" }),
+        title,
+        slug({ type: 'reports' }),
+        {
+            name: 'type',
+            title: 'Type',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'Annual Report', value: 'annual-report' },
+                    { title: 'Audit Report', value: 'audit-report' },
+                ],
+            },
+        },
+        {
+            name: 'image',
+            title: 'Cover Image',
+            type: 'image',
+            validation: (Rule) => Rule.required(),
+        },
+        {
+            name: 'excerpt',
+            title: 'Description',
+            type: 'text',
+            rows: 3,
+        },
+        content,
+        {
+            type: 'file',
+            title: 'File (PDF)',
+            name: 'file',
+            options: {
+                accept: '.pdf',
+            },
+        },
+    ],
 }

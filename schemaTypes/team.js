@@ -10,10 +10,22 @@ export default {
 
     fields: [
         {
+            name: 'staffTitle',
+            type: 'string',
+            title: 'Staff Title',
+            validation: (Rule) => Rule.required(),
+        },
+        {
             name: 'staff',
             title: 'Staff',
             type: 'array',
             of: [member],
+        },
+        {
+            name: 'boardTitle',
+            type: 'string',
+            title: 'Board Title',
+            validation: (Rule) => Rule.required(),
         },
         {
             name: 'board',

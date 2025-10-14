@@ -1,7 +1,9 @@
 import { BsStack } from 'react-icons/bs'
+import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list'
 
 import title from './ui/title'
 import slug from './ui/slug'
+import content from './ui/content'
 
 export default {
     name: 'resource',
@@ -9,7 +11,9 @@ export default {
     title: 'Resource',
     icon: BsStack,
 
+    orderings: [orderRankOrdering],
     fields: [
+        orderRankField({ type: "resource", newItemPosition: "before" }),
         title,
         slug({ type: 'resources' }),
         {
@@ -18,9 +22,10 @@ export default {
             type: 'string',
             options: {
                 list: [
-                    { title: 'Study', value: 'study' },
-                    { title: 'Report', value: 'report' },
-                    { title: 'Research', value: 'research' },
+                    { title: 'Studies & Research', value: 'study-research' },
+                    { title: 'News Article', value: 'news-article' },
+                    { title: 'Video', value: 'video' },
+                    { title: 'Gallery', value: 'gallery' },
                 ],
             },
         },
@@ -36,6 +41,7 @@ export default {
             type: 'text',
             rows: 3,
         },
+        content,
         {
             type: 'file',
             title: 'File (PDF)',
