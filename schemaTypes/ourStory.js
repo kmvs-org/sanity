@@ -1,5 +1,6 @@
 import image from './ui/image'
 import { FaCalendar } from "react-icons/fa";
+import simpleContent from './ui/simpleContent'
 
 export default {
     name: 'ourStory',
@@ -54,6 +55,7 @@ export default {
                                     title: 'Item',
                                     fields: [
                                         image,
+                                        simpleContent,
                                         {
                                             name: 'description',
                                             type: 'text',
@@ -64,12 +66,20 @@ export default {
                                     preview: {
                                         select: {
                                             media: 'image',
-                                            title: 'description',
+                                            content: 'content',
                                         },
                                         prepare(selection) {
-                                            const { title, media } = selection
+                                            const { content, media } = selection
+                                            let title = ' '
+                                            try
+                                            {
+                                                title = content[0].children[0].text.slice(0, 100)
+                                            } catch (error)
+                                            {
+                                                title = ' '
+                                            }
                                             return {
-                                                title: `${title.slice(0, 100)}...`,
+                                                title: title,
                                                 media: media,
                                             }
                                         },
