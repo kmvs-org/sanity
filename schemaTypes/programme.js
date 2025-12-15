@@ -34,7 +34,7 @@ export default {
                     name: 'subtitle',
                     type: 'string',
                     title: 'Subtitle ',
-                    validation: (Rule) => Rule.max(100).required(),
+                    validation: (Rule) => Rule.max(100),
                 },
             ],
         },
