@@ -6,6 +6,7 @@ export default defineCliConfig({
         dataset: 'multilingual'
     },
     deployment: {
-        autoUpdates: true,
+        appId: 'l9ljo4g4jy5xyppzs8ahpdz2',
+        autoUpdates: true
     },
 })
