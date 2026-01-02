@@ -41,7 +41,7 @@ export default defineConfig({
     title: 'KMVS Website',
 
     projectId: 'k53lfb44',
-    dataset: 'production',
+    dataset: 'multilingual',
 
     plugins: [
         structureTool({
