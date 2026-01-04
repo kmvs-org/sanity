@@ -1,10 +1,9 @@
-import { IoMdMegaphone } from "react-icons/io";
+import { IoMdMegaphone } from 'react-icons/io'
+import { translatedField } from './lang'
 
 import title from './ui/title'
 import image from './ui/image'
-import excerpt from './ui/excerpt'
 import imageText from './ui/imageText'
-import content from './ui/impactContent'
 import simpleContent from './ui/simpleContent'
 import slug from './ui/slug'
 
@@ -19,12 +18,7 @@ export default {
         slug({ type: 'impact' }),
         {
             ...image,
-            description: 'This image will be displayed everywhere the story is linke.',
-        },
-        {
-            ...excerpt,
-            description: 'This will be displayed everywhere the story is linked.',
-            validation: (Rule) => Rule.max(150),
+            description: 'This image will be displayed everywhere the story is linked.',
         },
         {
             name: 'programme',
@@ -35,17 +29,28 @@ export default {
                 disableNew: true,
             }
         },
+        translatedField(
+            {
+                name: 'overview',
+                title: 'Overview',
+                description: 'This will be the first paragraph of the story.',
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'text',
+                rows: 5,
+                validation: (Rule) => Rule.required(),
+            }
+        ),
         {
-            name: 'overview',
-            type: 'text',
-            title: 'Overview',
-            rows: 5,
+            ...imageText,
+            description: 'This will be displayed right below the overview.'
         },
-        imageText,
         {
             name: 'readMore',
             type: 'array',
             title: 'Read More',
+            description: 'This will be displayed on the left side, below the image + text panel.',
             of: [
                 {
                     type: 'reference',
@@ -66,11 +71,22 @@ export default {
                 },
             ],
         },
-        simpleContent,
+        {
+            ...simpleContent,
+            description: 'This will be displayed on the right side, below the image + text panel.',
+        },
         {
             ...image,
             name: 'image2',
             title: 'Final Image',
+            description: 'This will be displayed on the left side, below the read more panel.',
         },
     ],
+    preview: {
+        select: {
+            title: 'title.en',
+            subtitle: 'overview.en',
+            media: 'image',
+        },
+    },
 }

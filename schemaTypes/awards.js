@@ -1,6 +1,9 @@
 import { FaAward } from "react-icons/fa"
+import { translatedField } from "./lang"
 
 import image from './ui/image'
+import title from './ui/title'
+import simpleContent from './ui/simpleContent'
 
 export default {
     name: 'awards',
@@ -9,9 +12,14 @@ export default {
     icon: FaAward,
     fields: [
         {
-            name: 'description',
+            ...title,
+            options: {
+                columns: 2,
+            }
+        },
+        {
+            ...simpleContent,
             title: 'Overview',
-            type: 'text',
         },
         {
             name: 'awards',
@@ -29,67 +37,52 @@ export default {
                             description: 'This image will be displayed in the list view.',
                         },
                         {
-                            name: 'title',
-                            title: 'Title',
-                            type: 'string',
+                            ...title,
                             description: 'e.g. Laadli Media Award',
                         },
-                        {
-                            name: 'subtitle',
-                            title: 'Subtitle',
-                            type: 'string',
-                            description: 'e.g. For Gender Sensitivity',
-                        },
-                        {
-                            name: 'year',
-                            title: 'Year',
-                            type: 'string',
-                            description: 'e.g. 2011-2012',
-                        },
-                        {
-                            name: 'description',
-                            title: 'Description',
-                            type: 'text',
-                        },
+                        translatedField(
+                            {
+                                name: 'year',
+                                title: 'Year',
+                                description: 'e.g. 2011-2012',
+                            },
+                            {
+                                type: 'string',
+                                validation: (Rule) => Rule.required(),
+                            }
+                        ),
                         {
                             ...image,
                             title: 'Popup Image',
                             name: 'popupImage',
                             description: 'This image will be displayed in the popup.',
                         },
+                        simpleContent,
                     ],
                     preview: {
                         select: {
-                            title: 'title',
-                            subtitle: 'subtitle',
-                            year: 'year',
+                            title: 'title.en',
+                            subtitle: 'year.en',
                             media: 'image',
-                        },
-                        prepare(selection) {
-                            const { title, subtitle, year, media } = selection
-                            return {
-                                title: `${title || ''} ${subtitle ? `- ${subtitle}` : ''}`,
-                                subtitle: year,
-                                media: media,
-                            }
                         },
                     },
                 }
             ],
         },
-        {
-            name: 'quote',
-            title: 'Quote',
-            type: 'string',
-        },
+        translatedField(
+            {
+                name: 'quote',
+                title: 'Quote',
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required(),
+            }
+        ),
     ],
     preview: {
         select: {
-        },
-        prepare() {
-            return {
-                title: 'Awards & Recognition',
-            }
+            title: 'title.en',
         },
     },
 }

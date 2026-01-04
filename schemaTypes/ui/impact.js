@@ -18,8 +18,8 @@ export default {
     ],
     preview: {
         select: {
-            title: 'impactStory.title',
-            excerpt: 'impactStory.excerpt',
+            title: 'impactStory.title.en',
+            excerpt: 'impactStory.excerpt.en',
             image: 'impactStory.image',
         },
         prepare(selection) {

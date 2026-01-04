@@ -5,7 +5,6 @@ import image from './ui/image'
 import excerpt from './ui/excerpt'
 import content from './ui/content'
 import slug from './ui/slug'
-import impact from './ui/impact'
 
 export default {
     name: 'programme',
@@ -16,34 +15,34 @@ export default {
     fields: [
         title,
         slug({ type: 'programmes' }),
-        image,
-        excerpt,
+        {
+            ...image,
+            description: 'This image will be displayed in the programmes list view.',
+        },
+        {
+            ...excerpt,
+            description: 'This will be displayed in the programmes list view.',
+        },
         {
             name: 'banner',
             type: 'object',
             title: 'Banner',
+            description: 'This will be displayed on the individual programme\'s page.',
             fields: [
                 image,
                 {
-                    name: 'title',
-                    type: 'string',
-                    title: 'Title ',
-                    validation: (Rule) => Rule.max(100).required(),
-                },
-                {
-                    name: 'subtitle',
-                    type: 'string',
-                    title: 'Subtitle ',
-                    validation: (Rule) => Rule.max(100),
+                    ...title,
+                    title: 'Subtitle',
                 },
             ],
         },
-        {
-            ...content,
-            of: [
-                ...content.of,
-                impact,
-            ]
-        },
+        content,
     ],
+    preview: {
+        select: {
+            title: 'title.en',
+            subtitle: 'excerpt.en',
+            media: 'image',
+        },
+    },
 }

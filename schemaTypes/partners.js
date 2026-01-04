@@ -1,21 +1,29 @@
 import { MdHub } from "react-icons/md"
+import { translatedField } from './lang'
 
+import title from './ui/title'
 
 const partner = {
     name: 'partner',
     title: 'Partner',
     type: 'object',
     fields: [
-        {
-            name: 'name',
-            title: 'Name',
-            type: 'string',
-            validation: (Rule) => Rule.required(),
-        },
+        translatedField(
+            {
+                name: 'name',
+                title: 'Name',
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required(),
+            }
+        ),
         {
             name: 'logo',
             title: 'Logo',
             type: 'image',
+            validation: (Rule) => Rule.required().assetRequired(),
         },
         {
             name: 'link',
@@ -25,7 +33,7 @@ const partner = {
     ],
     preview: {
         select: {
-            title: 'name',
+            title: 'name.en',
             subtitle: 'link',
             media: 'logo',
         },
@@ -47,28 +55,84 @@ export default {
     icon: MdHub,
     fields: [
         {
-            name: 'overview',
-            title: 'Overview',
-            type: 'text',
-            rows: 5,
+            ...title,
+            options: {
+                columns: 2,
+            }
         },
+        translatedField(
+            {
+                name: 'overview',
+                title: 'Overview',
+            },
+            {
+                type: 'text',
+                rows: 5,
+            }
+        ),
         {
             name: 'image',
             title: 'Banner Image',
             type: 'image',
+            validation: (Rule) => Rule.required().assetRequired(),
         },
+        translatedField(
+            {
+                name: 'heading_1',
+                title: 'Organisations Section Heading',
+                description: 'Eg. Partner Organisations',
+                options: {
+                    columns: 2,
+                },
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required().max(25),
+            }
+        ),
         {
             name: 'organisations',
             title: 'Partner Organisations',
             type: 'array',
             of: [partner],
         },
+        translatedField(
+            {
+                name: 'heading_2',
+                title: 'Networks Section Heading',
+                description: 'Eg. Partner Networks',
+                options: {
+                    columns: 2,
+                },
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required().max(25),
+            }
+        ),
         {
             name: 'networks',
             title: 'Partner Networks',
             type: 'array',
             of: [partner],
         },
+        translatedField(
+            {
+                name: 'heading_3',
+                title: 'Collaborations Section Heading',
+                description: 'Eg. Collaborations',
+                options: {
+                    columns: 2,
+                },
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required().max(25),
+            }
+        ),
         {
             name: 'collaborators',
             title: 'Collaborations',
@@ -79,16 +143,21 @@ export default {
                     title: 'Partner',
                     type: 'object',
                     fields: [
-                        {
-                            name: 'name',
-                            title: 'Name',
-                            type: 'string',
-                            validation: (Rule) => Rule.required(),
-                        },
+                        translatedField(
+                            {
+                                name: 'name',
+                                title: 'Name',
+                                validation: (Rule) => Rule.required(),
+                            },
+                            {
+                                type: 'string',
+                                validation: (Rule) => Rule.required(),
+                            }
+                        ),
                     ],
                     preview: {
                         select: {
-                            title: 'name',
+                            title: 'name.en',
                         },
                         prepare(selection) {
                             const { title } = selection
@@ -103,11 +172,7 @@ export default {
     ],
     preview: {
         select: {
-        },
-        prepare() {
-            return {
-                title: 'Our Partners',
-            }
+            title: 'title.en',
         },
     },
 }

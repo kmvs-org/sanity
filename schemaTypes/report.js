@@ -26,6 +26,7 @@ export default {
                     { title: 'Audit Report', value: 'audit-report' },
                 ],
             },
+            validation: (Rule) => Rule.required(),
         },
         {
             name: 'image',
@@ -33,20 +34,12 @@ export default {
             type: 'image',
             validation: (Rule) => Rule.required(),
         },
-        {
-            name: 'excerpt',
-            title: 'Description',
-            type: 'text',
-            rows: 3,
-        },
         content,
-        {
-            type: 'file',
-            title: 'File (PDF)',
-            name: 'file',
-            options: {
-                accept: '.pdf',
-            },
-        },
     ],
+    preview: {
+        select: {
+            title: 'title.en',
+            media: 'image',
+        },
+    },
 }

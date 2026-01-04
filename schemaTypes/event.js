@@ -2,11 +2,10 @@ import { IoCalendarClearSharp } from 'react-icons/io5'
 
 import title from './ui/title'
 import image from './ui/image'
-import content from './ui/content'
 import slug from './ui/slug'
-
-import { externalLinkButton as button } from './ui/button'
 import excerpt from './ui/excerpt'
+import content from './ui/content'
+
 
 export default {
     name: 'event',
@@ -18,40 +17,20 @@ export default {
         title,
         slug({ type: 'events' }),
         {
-            name: 'dates',
-            type: 'object',
-            title: 'Dates',
-            fields: [
-                {
-                    name: 'start',
-                    type: 'date',
-                    title: 'Start',
-                    description: 'Required',
-                    validation: (Rule) => Rule.required(),
-                },
-                {
-                    name: 'end',
-                    type: 'date',
-                    title: 'End',
-                    description: 'Optional',
-                },
-            ],
-            options: {
-                columns: 2,
-            },
+            name: 'start_date',
+            type: 'date',
+            title: 'Start Date',
+            description: 'Used to order the events, latest first.',
+            validation: (Rule) => Rule.required(),
         },
         image,
         excerpt,
         content,
-        {
-            ...button,
-            title: 'Call to Action',
-        },
     ],
     preview: {
         select: {
-            title: 'title',
-            subtitle: 'excerpt',
+            title: 'title.en',
+            subtitle: 'excerpt.en',
             media: 'image',
         },
     },

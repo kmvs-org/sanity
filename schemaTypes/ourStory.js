@@ -1,6 +1,8 @@
 import image from './ui/image'
 import { FaCalendar } from "react-icons/fa";
 import simpleContent from './ui/simpleContent'
+import { translatedField } from './lang'
+import title from './ui/title'
 
 export default {
     name: 'ourStory',
@@ -9,23 +11,101 @@ export default {
 
     fields: [
         {
-            name: 'description',
-            title: 'Overview',
-            type: 'text',
-            rows: 3,
+            ...title,
+            options: {
+                columns: 2,
+            }
         },
-        {
-            name: 'description2',
-            title: 'Capitalised Text',
-            type: 'text',
-            rows: 3,
-        },
-        {
-            name: 'description3',
-            title: 'Text in brown section',
-            type: 'text',
-            rows: 3,
-        },
+        translatedField(
+            {
+                name: 'description',
+                title: 'Overview',
+            },
+            {
+                type: 'text',
+                rows: 3,
+            }
+        ),
+        translatedField(
+            {
+                name: 'description2',
+                title: 'Capitalised Text',
+            },
+            {
+                type: 'text',
+                rows: 3,
+            }
+        ),
+        translatedField(
+            {
+                name: 'description3',
+                title: 'Text in brown section',
+            },
+            {
+                type: 'text',
+                rows: 3,
+            }
+        ),
+        translatedField(
+            {
+                name: 'decade_1',
+                title: 'Decade Selector Text - 1990',
+                description: 'Eg. 1990s',
+                options: {
+                    columns: 2,
+                },
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required().max(5),
+            }
+        ),
+        translatedField(
+            {
+                name: 'decade_2',
+                title: 'Decade Selector Text - 2000',
+                description: 'Eg. 2000s',
+                options: {
+                    columns: 2,
+                },
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required().max(5),
+            }
+        ),
+        translatedField(
+            {
+                name: 'decade_3',
+                title: 'Decade Selector Text - 2010',
+                description: 'Eg. 2010s',
+                options: {
+                    columns: 2,
+                },
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required().max(5),
+            }
+        ),
+        translatedField(
+            {
+                name: 'decade_4',
+                title: 'Decade Selector Text - 2020',
+                description: 'Eg. 2020s',
+                options: {
+                    columns: 2,
+                },
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required().max(5),
+            }
+        ),
         {
             name: 'timeline',
             type: 'array',
@@ -38,12 +118,17 @@ export default {
                     title: 'Milestone',
                     icon: FaCalendar,
                     fields: [
-                        {
-                            name: 'year',
-                            type: 'number',
-                            title: 'Year',
-                            validation: (Rule) => Rule.required(),
-                        },
+                        translatedField(
+                            {
+                                name: 'year',
+                                title: 'Year',
+                                validation: (Rule) => Rule.required(),
+                            },
+                            {
+                                type: 'number',
+                                validation: (Rule) => Rule.required(),
+                            }
+                        ),
                         {
                             name: 'items',
                             type: 'array',
@@ -56,26 +141,18 @@ export default {
                                     fields: [
                                         image,
                                         simpleContent,
-                                        {
-                                            name: 'description',
-                                            type: 'text',
-                                            title: 'Description',
-                                            rows: 8,
-                                        },
                                     ],
                                     preview: {
                                         select: {
                                             media: 'image',
-                                            content: 'content',
+                                            content: 'content.en',
                                         },
                                         prepare(selection) {
                                             const { content, media } = selection
                                             let title = ' '
-                                            try
-                                            {
+                                            try {
                                                 title = content[0].children[0].text.slice(0, 100)
-                                            } catch (error)
-                                            {
+                                            } catch (error) {
                                                 title = ' '
                                             }
                                             return {
@@ -102,14 +179,18 @@ export default {
                     },
                     preview: {
                         select: {
-                            title: 'year',
+                            title: 'year.en',
                             bgColor: 'bgColor',
+                            items: 'items',
                         },
                         prepare(selection) {
-                            const { title, bgColor } = selection
+                            const { title, bgColor, items } = selection
+                            const itemCount = items ? items.length : 0
+                            const media = items ? items[0].image : null
                             return {
                                 title,
-                                subtitle: `${bgColor} background`,
+                                subtitle: `${itemCount} items on ${bgColor} background`,
+                                media: media,
                             }
                         },
                     },
@@ -119,11 +200,7 @@ export default {
     ],
     preview: {
         select: {
-        },
-        prepare() {
-            return {
-                title: 'Our Story',
-            }
+            title: 'title.en',
         },
     },
 }

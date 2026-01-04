@@ -1,5 +1,5 @@
-import {externalLinkButton} from './button'
-import {TfiLayoutAccordionMerged} from 'react-icons/tfi'
+import { nonTranslatedButton } from './button'
+import { TfiLayoutAccordionMerged } from 'react-icons/tfi'
 
 const accordion = {
   name: 'accordion',
@@ -18,7 +18,7 @@ const accordion = {
       title: 'Text',
       validation: (Rule) => Rule.required(),
     },
-    externalLinkButton,
+    nonTranslatedButton,
   ],
 }
 

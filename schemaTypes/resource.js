@@ -4,6 +4,7 @@ import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-li
 import title from './ui/title'
 import slug from './ui/slug'
 import content from './ui/content'
+import file from './ui/file'
 
 export default {
     name: 'resource',
@@ -22,12 +23,12 @@ export default {
             type: 'string',
             options: {
                 list: [
-                    { title: 'Studies & Research', value: 'study-research' },
+                    { title: 'Research Studies', value: 'study-research' },
                     { title: 'News Article', value: 'news-article' },
                     { title: 'Video', value: 'video' },
-                    { title: 'Gallery', value: 'gallery' },
                 ],
             },
+            validation: (Rule) => Rule.required(),
         },
         {
             name: 'image',
@@ -35,20 +36,12 @@ export default {
             type: 'image',
             validation: (Rule) => Rule.required(),
         },
-        {
-            name: 'excerpt',
-            title: 'Description',
-            type: 'text',
-            rows: 3,
-        },
         content,
-        {
-            type: 'file',
-            title: 'File (PDF)',
-            name: 'file',
-            options: {
-                accept: '.pdf',
-            },
-        },
     ],
+    preview: {
+        select: {
+            title: 'title.en',
+            media: 'image',
+        },
+    },
 }

@@ -1,7 +1,8 @@
 import { IoPerson } from "react-icons/io5"
+import { translatedField } from "../lang"
 
 import title from './title'
-import content from './simpleContent'
+import simpleContent from './simpleContent'
 
 export default {
     name: 'member',
@@ -18,27 +19,35 @@ export default {
             name: 'image',
             type: 'image',
             title: 'Image',
+            validation: (Rule) => Rule.required().assetRequired(),
         },
-        {
-            name: 'designation',
-            type: 'string',
-            title: 'Designation',
-        },
-        {
-            name: 'department',
-            type: 'string',
-            title: 'Department',
-        },
-        {
-            ...content,
-            title: 'About',
-        },
+        translatedField(
+            {
+                name: 'designation',
+                title: 'Designation',
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required(),
+            }
+        ),
+        translatedField(
+            {
+                name: 'department',
+                title: 'Department',
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required(),
+            }
+        ),
+        simpleContent,
     ],
     preview: {
         select: {
-            title: 'title',
-            designation: 'designation',
-            department: 'department',
+            title: 'title.en',
+            designation: 'designation.en',
+            department: 'department.en',
             media: 'image',
         },
         prepare(selection) {

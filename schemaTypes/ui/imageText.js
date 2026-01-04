@@ -1,4 +1,5 @@
 import { RiLayoutColumnFill } from "react-icons/ri"
+import { translatedField } from '../lang'
 
 import image from './image'
 
@@ -10,17 +11,21 @@ export default {
 
     fields: [
         image,
-        {
-            name: 'text',
-            type: 'text',
-            title: 'Text',
-            rows: 5,
-        }
+        translatedField(
+            {
+                name: 'text',
+                title: 'Text',
+            },
+            {
+                type: 'text',
+                rows: 5,
+            }
+        ),
     ],
     preview: {
         select: {
             media: 'image',
-            text: 'text',
+            text: 'text.en',
         },
         prepare(selection) {
             const { text, media } = selection

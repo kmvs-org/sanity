@@ -11,7 +11,7 @@ const slug = ({ name = 'slug', title = 'Slug', group = null, fieldset = null, de
         input: PrefixedSlugInput,
     },
     options: {
-        source: 'title',
+        source: 'title.en',
         urlPrefix: (document) => {
             let url = `/`
             url += type || type === '' ? type : document._type ?? ''
@@ -34,8 +34,7 @@ const slug = ({ name = 'slug', title = 'Slug', group = null, fieldset = null, de
         storeFullUrl: true,
     },
     validation: (Rule) => Rule.custom(async (value, { document, getClient }) => {
-        if (!value)
-        {
+        if (!value) {
             return 'Slug is required'
         }
         return true

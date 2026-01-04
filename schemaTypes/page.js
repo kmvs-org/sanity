@@ -13,4 +13,9 @@ export default {
         slug({ type: '' }),
         content,
     ],
+    preview: {
+        select: {
+            title: 'title.en',
+        },
+    },
 }

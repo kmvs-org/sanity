@@ -1,16 +1,11 @@
-import {FaFileAlt} from 'react-icons/fa'
+import { FaFileAlt } from 'react-icons/fa'
 
 export default {
   name: 'file',
   type: 'file',
-  title: 'File',
+  title: 'File (PDF)',
+  options: {
+    accept: '.pdf',
+  },
   icon: FaFileAlt,
-  fields: [
-    {
-      name: 'name',
-      type: 'string',
-      title: 'Display Name',
-      validation: (Rule) => Rule.required(),
-    },
-  ],
 }

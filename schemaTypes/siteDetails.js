@@ -1,3 +1,5 @@
+import { translatedField } from './lang'
+
 export default {
   name: 'siteDetails',
   type: 'document',
@@ -17,20 +19,30 @@ export default {
     },
   ],
   fields: [
-    {
-      name: 'title',
-      type: 'string',
-      title: 'Title',
-      group: 'seo',
-      validation: (Rule) => Rule.max(50).required(),
-    },
-    {
-      name: 'tagline',
-      type: 'string',
-      title: 'Tagline',
-      group: 'seo',
-      validation: (Rule) => Rule.max(100),
-    },
+    translatedField(
+      {
+        name: 'title',
+        title: 'Title',
+        group: 'seo',
+        validation: (Rule) => Rule.required(),
+      },
+      {
+        type: 'string',
+        validation: (Rule) => Rule.max(50).required()
+      }
+    ),
+    translatedField(
+      {
+        name: 'tagline',
+        title: 'Tagline',
+        group: 'seo',
+        validation: (Rule) => Rule.required(),
+      },
+      {
+        type: 'string',
+        validation: (Rule) => Rule.max(100).required()
+      }
+    ),
     {
       name: 'email',
       type: 'string',
@@ -44,13 +56,6 @@ export default {
       title: 'Phone',
       group: 'contactDetails',
       validation: (Rule) => Rule.max(20).required(),
-    },
-    {
-      name: 'address',
-      type: 'string',
-      title: 'Address',
-      group: 'contactDetails',
-      validation: (Rule) => Rule.required(),
     },
     {
       name: 'instagram',
@@ -83,4 +88,11 @@ export default {
       group: 'socialMedia',
     },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Site Details',
+      }
+    },
+  },
 }

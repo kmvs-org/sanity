@@ -1,4 +1,5 @@
 import { IoPeople } from 'react-icons/io5'
+import { translatedField } from './lang'
 
 import member from './ui/member'
 
@@ -9,24 +10,34 @@ export default {
     icon: IoPeople,
 
     fields: [
-        {
-            name: 'staffTitle',
-            type: 'string',
-            title: 'Staff Title',
-            validation: (Rule) => Rule.required(),
-        },
+        translatedField(
+            {
+                name: 'staffTitle',
+                title: 'Staff Title',
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required(),
+            }
+        ),
         {
             name: 'staff',
             title: 'Staff',
             type: 'array',
             of: [member],
         },
-        {
-            name: 'boardTitle',
-            type: 'string',
-            title: 'Board Title',
-            validation: (Rule) => Rule.required(),
-        },
+        translatedField(
+            {
+                name: 'boardTitle',
+                title: 'Board Title',
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required(),
+            }
+        ),
         {
             name: 'board',
             title: 'Board',
@@ -35,8 +46,6 @@ export default {
         },
     ],
     preview: {
-        select: {
-        },
         prepare() {
             return {
                 title: 'Team & Board',

@@ -18,6 +18,7 @@ import {
     IoMenu,
     IoHome,
     IoBook,
+    IoLanguage,
 } from 'react-icons/io5'
 import { IoMdMegaphone } from 'react-icons/io'
 import { FaBuildingUser } from 'react-icons/fa6'
@@ -82,6 +83,8 @@ export default defineConfig({
                         }),
                         S.documentTypeListItem('event').title('Events').icon(IoCalendarClearSharp),
                         S.documentTypeListItem('impactStory').title('Impact Stories').icon(IoMdMegaphone),
+                        S.divider(),
+                        singletonListItem(S, 'translations', 'Miscellaneous Text').icon(IoLanguage),
                     ]),
         }),
         ...(process.env.NODE_ENV === 'development' ? [visionTool()] : []),

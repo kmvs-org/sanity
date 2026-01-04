@@ -1,21 +1,24 @@
 import { IoLinkOutline, IoListOutline } from 'react-icons/io5'
+import { translatedField } from './lang'
 
 const subMenuItem = {
     name: 'subMenuItem',
     type: 'object',
     title: 'Sub Menu Item',
     icon: IoLinkOutline,
-    options: {
-        columns: 2,
-    },
     fields: [
-        {
-            name: 'text',
-            type: 'string',
-            title: 'Text',
-            description: 'Max character count: 25',
-            validation: (Rule) => Rule.required().max(25),
-        },
+        translatedField(
+            {
+                name: 'text',
+                title: 'Text',
+                description: 'Max character count: 25',
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required().max(25),
+            }
+        ),
         {
             name: 'link',
             type: 'url',
@@ -26,7 +29,7 @@ const subMenuItem = {
     ],
     preview: {
         select: {
-            title: 'text',
+            title: 'text.en',
             subtitle: 'link',
         },
     },
@@ -38,13 +41,18 @@ const menuItem = {
     title: 'Menu Item',
     icon: IoListOutline,
     fields: [
-        {
-            name: 'text',
-            type: 'string',
-            title: 'Text',
-            description: 'Max character count: 15',
-            validation: (Rule) => Rule.required().max(20),
-        },
+        translatedField(
+            {
+                name: 'text',
+                title: 'Text',
+                description: 'Max character count: 20',
+                validation: (Rule) => Rule.required(),
+            },
+            {
+                type: 'string',
+                validation: (Rule) => Rule.required().max(20),
+            }
+        ),
         {
             name: 'subMenu',
             type: 'array',
@@ -52,6 +60,11 @@ const menuItem = {
             of: [subMenuItem],
         },
     ],
+    preview: {
+        select: {
+            title: 'text.en',
+        },
+    },
 }
 
 export default {
@@ -63,7 +76,7 @@ export default {
             name: 'logo',
             type: 'image',
             title: 'Logo',
-            validation: (Rule) => Rule.required(),
+            validation: (Rule) => Rule.required().assetRequired(),
         },
         {
             name: 'menu',
@@ -74,8 +87,6 @@ export default {
         },
     ],
     preview: {
-        select: {
-        },
         prepare() {
             return {
                 title: 'Header',

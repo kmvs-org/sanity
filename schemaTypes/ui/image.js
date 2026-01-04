@@ -5,6 +5,7 @@ export default {
     type: 'image',
     title: 'Image',
     icon: FaImage,
+    validation: (Rule) => Rule.required().assetRequired(),
     options: {
         hotspot: true,
     },
